@@ -1,0 +1,14 @@
+﻿@model  List<flyamerica.DAL.pilottraining>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<ul>
+@foreach (flyamerica.DAL.pilottraining t in Model)
+{
+    <li>@t.TrainingName</li>
+}
+</ul>
