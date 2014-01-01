@@ -1,0 +1,249 @@
+﻿<script type="text/javascript">
+    $(window).load(function () {
+        //  Responsive layout, resizing the items
+        $('#carousel').carouFredSel({
+            auto: false,
+            responsive: true,
+            width: '100%',
+            scroll: 1,
+            prev: '#prev',
+            next: '#next',
+            pagination: false,
+            mousewheel: false,
+            swipe: {
+                onMouse: true,
+                onTouch: true
+            },
+            items: {
+                width: 320,
+                height: 'auto',   //  optionally resize item-height
+                visible: {
+                    min: 1,
+                    max: 1
+                }
+            }
+        });
+    });
+
+     $(document).ready(function () {
+            $.ajax({
+                    url: '@Url.Action("LoadSlider", "Home")',
+                    type: 'GET',
+                    cache: true,
+                }).done(function(result) {
+                        $('.slider').html(result);
+                });
+        });
+
+        $(document).ready(function(){
+            $.ajax({
+                url: '@Url.Action("LoadFeaturedContent", "Home")',
+                type: 'GET',
+                cache: true,
+            }).done(function(result){
+                $('.wrapp').html(result);
+            });
+
+
+        });
+						
+</script>
+
+<div class="slider">
+</div>
+
+
+<div class="main">
+	<div class="div-content">  
+	
+	<div class="container_12">
+		<div class="grid_12 txt_cntr">
+			<div class="wrapp"></div>
+            <div class="wrapper2"></div>
+		</div>  
+	</div>
+
+	<div class="box1">
+		<div class="container_12">
+			<div class="grid_12">
+				
+				
+					<div class="grid_4 alpha">
+							<div class="wrapper marTop1 maxheight1">
+								<figure><a href="images/page1_big_pic1.jpg" class="magnifier2" ><img src="images/page1_pic1.jpg" alt=""><span class="zoom"></span></a></figure>
+								<h3>Transport Connection</h3>
+								<p class="lh18">Consecteturadipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+								<a href="#" class="more_btn2">more</a>
+							</div>
+							<div class="wrapper marTop1 maxheight1">
+								<figure><a href="images/page1_big_pic2.jpg" class="magnifier2" ><img src="images/page1_pic2.jpg" alt=""><span class="zoom"></span></a></figure>
+								<h3>Useful Links &amp; Numbers </h3>
+								<p class="lh18">Consecteturadipisicing elit, sed do eiusmod tempor incididunt ut labore. </p>
+								<a href="#" class="more_btn2">more</a>
+							</div>
+					</div>
+
+					<div class="grid_4">
+						<div class="wrapper marTop1 maxheight1">
+							<figure><a href="images/page1_big_pic3.jpg" class="magnifier2" ><img src="images/page1_pic3.jpg" alt=""><span class="zoom"></span></a></figure>
+							<h3>Greeting passengers</h3>
+							<p class="lh18">Consecteturadipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+							<a href="#" class="more_btn2">more</a>
+						</div>
+						<div class="wrapper marTop1 maxheight1">
+							<figure><a href="images/page1_big_pic4.jpg" class="magnifier2" ><img src="images/page1_pic4.jpg" alt=""><span class="zoom"></span></a></figure>
+							<h3>Airport Authority</h3>
+							<p class="lh18">Consecteturadipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+							<a href="#" class="more_btn2">more</a>
+						</div>
+					</div>
+
+					<div class="grid_4 omega">
+							<div class="wrapper marTop1 maxheight1">
+								<figure><a href="images/page1_big_pic5.jpg" class="magnifier2" ><img src="images/page1_pic5.jpg" alt=""><span class="zoom"></span></a></figure>
+								<h3>Airport Security</h3>
+								<p class="lh18">Consecteturadipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+								<a href="#" class="more_btn2">more</a>
+							</div>
+							<div class="wrapper marTop1 maxheight1">
+								<figure><a href="images/page1_big_pic6.jpg" class="magnifier2" ><img src="images/page1_pic6.jpg" alt=""><span class="zoom"></span></a></figure>
+								<h3>Air Cargo</h3>
+								<p class="lh18">Consecteturadipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
+								<a href="#" class="more_btn2">more</a>
+							</div>
+					</div>
+
+				
+				
+			</div>  
+		</div>
+	</div>
+
+
+	<div class="container_12">
+		<div class="grid_12">
+			<h2 class="v3">Popular Destinations</h2>
+			<div class="page_list">
+				<div class="grid_2 alpha maxheight2">
+					<ul class="listWithMarker">
+						<li><a href="#">Austria</a></li>
+						<li><a href="#">Balearic Islands</a></li>
+						<li><a href="#">Belgium</a></li>
+						<li><a href="#">Bulgaria</a></li>
+					</ul>
+				</div>
+	
+				<div class="grid_2 maxheight2">
+					<ul class="listWithMarker">
+						<li><a href="#">Canary Islands</a></li>
+						<li><a href="#">Croatia</a></li>
+						<li><a href="#">Cyprus</a></li>
+						<li><a href="#">Czech Republic</a></li>
+					</ul>
+				</div>
+	
+				<div class="grid_2 maxheight2">
+					<ul class="listWithMarker">
+						<li><a href="#">France</a></li>
+						<li><a href="#">Germany</a></li>
+						<li><a href="#">Greece</a></li>
+						<li><a href="#">Hungary</a></li>
+					</ul>
+				</div>
+	
+				<div class="grid_2 maxheight2">
+					<ul class="listWithMarker">
+						<li><a href="#">Italy</a></li>
+						<li><a href="#">Jersey</a></li>
+						<li><a href="#">Latvia</a></li>
+						<li><a href="#">Lithuania</a></li>
+					</ul>
+				</div>
+	
+				<div class="grid_2 maxheight2">
+					<ul class="listWithMarker">
+						<li><a href="#">Malta</a></li>
+						<li><a href="#">Netherlands</a></li>
+						<li><a href="#">Norway</a></li>
+						<li><a href="#">Pakistan</a></li>
+					</ul>
+				</div>
+	
+				<div class="grid_2 omega ">
+					<ul class="listWithMarker">
+						<li><a href="#">Poland</a></li>
+						<li><a href="#">Portugal</a></li>
+						<li><a href="#">Switzerland</a></li>
+						<li><a href="#">Tunisia</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="grid_12">
+				<a href="#" class="more_btn gradient v2">view all</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container_12">
+		<div class="grid_12">
+			<div class="grid_3 alpha">
+				<h2 class="v3">Recent News</h2>
+				<p><span class="day">22/</span><span class="month">oct.2013</span></p>
+				<p class="lh21"><span class="txt1">Lorem ipsum dolor sit amet.</span>Consecteturadipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqu. Ut enim ad minim veniam, quis nos</p>
+				<a href="#" class="more_btn2">more</a>
+			</div>
+
+			<div class="grid_3 prefix_1">
+				<h2 class="v3"></h2>
+				<p><span class="day">20/</span><span class="month">oct.2013</span></p>
+				<p class="lh21"><span class="txt1">Lorem ipsum dolor sit amet, consectet uradipisicing elit.</span>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+				<a href="#" class="more_btn2">more</a>
+			</div>
+
+			<div class="grid_5 omega">
+				<h2 class="v3 mobile_mar_top">Testimonials</h2>
+				<div class="list_carousel responsive">
+					  <ul id="carousel">
+						<li>
+							<blockquote>
+								<div class="inner">
+									<p>“ Phasellus porta. Fusce susct varius mi. Cum sociis natoque penabus et magnis dis parturient montes, nascetur ridiculus mus. Nulla dui. Do eiusmod temporincididunt ut labore et dolore...”           </p>
+								</div>
+							</blockquote>
+							<div class="wrapper under_quote">
+								<img src="images/page1_pic7.jpg" alt="" class="no_resize img2">
+								<p class="color2 fs14"><span class="color1">Alex Greenbaum</span><br>USA. Detroit</p>
+							</div>
+						</li>
+
+						<li>
+							<blockquote>
+								<div class="inner">
+									<p>“Fusce susct varius mi. Cum sociis natoque penabus et magnis dis parturient montes, nascetur ridiculus mus. Nulla dui. Do eiusmod temporincididunt ut labore et dolore...”           </p>
+								</div>
+							</blockquote>
+							<div class="wrapper under_quote">
+								<img src="images/page1_pic8.jpg" alt="" class="no_resize img2">
+								<p class="color2 fs14"><span class="color1">Sandra Smith</span><br>USA. Detroit</p>
+							</div>
+						</li>
+
+					  </ul>
+					  <div class="clear"></div>
+					  <a class="prev" id="prev"  href="javascript:;"></a>
+					  <a class="next" id="next"  href="javascript:;"></a> 
+					</div>
+			</div>
+
+		</div>
+	</div>
+
+	
+	</div>
+</div>
+
+<script type="text/javascript">
+
+</script>

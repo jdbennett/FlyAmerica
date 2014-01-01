@@ -1,0 +1,48 @@
+﻿@model IEnumerable<flyamerica.BI.ViewModels.FeaturedContent>
+
+
+
+
+@{
+    int count = Model.Count();
+    int counter = 0;
+
+    foreach (var item in Model)
+    {
+        if(counter == 0)
+        {
+            <div class="grid_4 alpha">
+                 <img src="@item.Image" alt="" class="no_resize img1">
+	            <h2 class="v2">@item.Title</h2>
+		        <p class="lh21">@item.Description</p>
+                @Html.ActionLink("More", @item.Action , @item.Controller, new {@class="more_btn gradient"})
+		    </div>
+        }
+        else
+        {
+            if(counter == count)                
+            {
+                <div class="grid_4 omega">
+                    <img src="@item.Image" alt="" class="no_resize img1">
+	                <h2 class="v2">@item.Title</h2>
+		            <p class="lh21">@item.Description</p>
+                    @Html.ActionLink("More", @item.Action , @item.Controller, new {@class="more_btn gradient"})
+		        </div>
+            }
+            else
+            {
+                <div class="grid_4">
+                    <img src="@item.Image" alt="" class="no_resize img1">
+	                <h2 class="v2">@item.Title</h2>
+		            <p class="lh21">@item.Description</p>
+                    @Html.ActionLink("More", @item.Action , @item.Controller, new {@class="more_btn gradient"})
+		        </div>
+            }       
+              
+        }
+    
+
+    }
+}
+			
+

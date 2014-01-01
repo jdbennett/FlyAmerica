@@ -1,0 +1,40 @@
+﻿@using flyamerica.Helpers
+@model List<flyamerica.BI.ViewModels.NavItem>
+
+
+<ul class="sf-menu">
+    @foreach(flyamerica.BI.ViewModels.NavItem item in Model)
+    {
+        <li>@Html.NavItem(item, null)<strong></strong>
+        @if(item.SubItems.Count > 0)
+        {
+            <ul class='submenu'>
+            @foreach (flyamerica.BI.ViewModels.NavItem subitem in item.SubItems)
+            {
+                if(subitem.SubItems.Count > 0)
+                {
+                    <li class='sub-menu'>
+                        @Html.ActionLink(subitem.Text, subitem.Action, subitem.Controller)
+                        <ul class='submenu2'>
+                            @foreach(flyamerica.BI.ViewModels.NavItem subsubitem in subitem.SubItems)
+                            {
+                                <li>@Html.ActionLink(subsubitem.Text, subsubitem.Action, subsubitem.Controller)</li>
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink(subitem.Text , subitem.Action , subitem.Controller)</li>
+                }          
+
+                 
+            }
+            </ul>
+        }
+        </li>
+             
+    }
+</ul>
+
+

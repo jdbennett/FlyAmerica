@@ -1,0 +1,33 @@
+﻿@model IEnumerable<flyamerica.BI.ViewModels.SliderImage>
+
+
+
+      <div class="" id="camera_wrap">
+      @foreach (var item in Model)
+      {
+          <div data-src="@item.URL"></div>
+      }
+      </div>
+      <div id="loading" style="display:none"><img src="../../../Content/images/ajax-loader.gif" /></div>
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $("#loading").css("display", "block");
+              $('#camera_wrap').camera({
+                  loader: false,
+                  pagination: true,
+                  thumbnails: false,
+                  height: '36.5%',
+                  fx: 'simpleFade',
+                  rows: '1',
+                  slicedCols: '1',
+                  slicedRows: '1',
+                  caption: false
+              });
+              $("#loading").css("display", "none");
+          });
+
+          $(document).ready(function () {
+              // Initialize the gallery
+              $('.magnifier2').touchTouch();
+          });
+</script>

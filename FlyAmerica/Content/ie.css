@@ -1,0 +1,12 @@
+
+.class { behavior:url(js/PIE.htc); position:absolute;}
+.more_btn { behavior:url(js/PIE.htc); position:relative;}
+
+a.magnifier2:hover .zoom{
+	display: block;
+}
+a.magnifier2 .zoom{
+	display: none;
+}
+
+body{min-width: 1060px;}
