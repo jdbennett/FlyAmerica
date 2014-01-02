@@ -96,8 +96,9 @@
       <DependentUpon>Page.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FlightTrainingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\InstructorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -113,11 +114,15 @@
     <Content Include="Content\camera.css" />
     <Content Include="Content\form.css" />
     <Content Include="Content\ie.css" />
+    <Content Include="Content\images\advanced.jpg" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\camera-loader.gif" />
+    <Content Include="Content\images\commercialpilot.jpg" />
     <Content Include="Content\images\FlyAmerica.png" />
     <Content Include="Content\images\header_pattern.png" />
+    <Content Include="Content\images\IFR.jpg" />
     <Content Include="Content\images\pagination.png" />
+    <Content Include="Content\images\privatepilot.jpg" />
     <Content Include="Content\images\slide1.jpg" />
     <Content Include="Content\images\slide2.jpg" />
     <Content Include="Content\images\slide3.jpg" />
@@ -195,12 +200,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-2.0.3.min.map" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Partials\_TopNav.cshtml" />
     <Content Include="Views\Shared\Partials\_LayoutIncludes.cshtml" />
     <Content Include="Views\Home\Partials\_Slider.cshtml" />
     <Content Include="Views\Home\Partials\_FeaturedContent.cshtml" />
+    <Content Include="Views\FlightTraining\Index.cshtml" />
+    <Content Include="Views\FlightTraining\Partials\_FlightPrograms.cshtml" />
+    <Content Include="Views\FlightTraining\Program.cshtml" />
+    <Content Include="Views\Instructors\Index.cshtml" />
+    <Content Include="Views\Instructors\Instructor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BI\BI.csproj">

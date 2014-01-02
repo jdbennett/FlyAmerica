@@ -60,6 +60,9 @@
     <Compile Include="Navigation\NavigationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FeaturedContent.cs" />
+    <Compile Include="ViewModels\FlightTraining.cs" />
+    <Compile Include="ViewModels\FlightTrainingProgram.cs" />
+    <Compile Include="ViewModels\Instructor.cs" />
     <Compile Include="ViewModels\NavItem.cs" />
     <Compile Include="ViewModels\SliderImage.cs" />
   </ItemGroup>

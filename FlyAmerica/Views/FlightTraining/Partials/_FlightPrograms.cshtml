@@ -1,0 +1,44 @@
+﻿@model IEnumerable<flyamerica.BI.ViewModels.FlightTrainingProgram>
+<div class="wrapp">
+<h2 class="v4">Programs</h2>
+    @{
+        List<flyamerica.BI.ViewModels.FlightTrainingProgram> oddColumn = new List<flyamerica.BI.ViewModels.FlightTrainingProgram>();
+        oddColumn.AddRange (Model.Where(x => x.Sequence % 2 == 1).ToList());
+
+        List<flyamerica.BI.ViewModels.FlightTrainingProgram> evenColumn = Model.Where(x => !oddColumn.Any(y => y.ProgramId == x.ProgramId)).ToList();
+
+        <div class="grid_3 alpha">
+            @foreach (var item in oddColumn)
+            {
+                <div class="wrapp marBot3">
+					<img src="@item.Image" alt="" class="img3 fiximgheight">
+					<h3>@item.ProgramName</h3>
+					<p class="p_martop fixheight">@item.ShortDescription</p>
+                   @Html.ActionLink("More", "Program", "FlightTraining", new { ID = item.ProgramId }, new { @class = "more_btn v3 gradient" });
+				</div>
+            }
+        </div>
+        
+        <div class="grid_3 omega">
+            @foreach (var item in evenColumn)
+            {
+            <div class="wrapp marBot3">
+					<img src="@item.Image" alt="" class="img3 fiximgheight">
+					<h3>@item.ProgramName</h3>
+					<p class="p_martop fixheight">@item.ShortDescription</p>
+                   @Html.ActionLink("More", "Program", "FlightTraining", new { ID = item.ProgramId }, new { @class = "more_btn v3 gradient" });
+			</div>
+            }
+        </div>
+        
+    }
+    </div>
+
+				
+
+							
+						
+
+
+
+						

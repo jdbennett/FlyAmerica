@@ -1,0 +1,29 @@
+﻿@model flyamerica.BI.ViewModels.FlightTrainingProgram
+
+<div class="bg_img"></div>
+
+
+<div class="main">
+	<div class="div-content">  
+	
+	<div class="container_12">
+		<div class="grid_12">		
+			<div class="wrapper marBot2">
+					<h2 class="v5">@Model.ProgramName</h2>
+                    @foreach (var item in Model.Descriptions)
+                    {
+                        <p class="lh21">@item</p>
+                    }
+			</div>
+		</div>  
+	</div>
+
+
+
+
+
+<!--=======footer=================================-->
+		
+	</div>
+
+</div>

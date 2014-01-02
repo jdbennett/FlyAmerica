@@ -5,7 +5,7 @@
 <ul class="sf-menu">
     @foreach(flyamerica.BI.ViewModels.NavItem item in Model)
     {
-        <li>@Html.NavItem(item, null)<strong></strong>
+        <li class="@Html.LiSelector(item)">@Html.ActionLink(item.Text, item.Action, item.Controller)<strong></strong>
         @if(item.SubItems.Count > 0)
         {
             <ul class='submenu'>

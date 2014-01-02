@@ -65,6 +65,7 @@
       <DependentUpon>FlyAmerica.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reference\InstructorRatingTypes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

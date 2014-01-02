@@ -22,5 +22,17 @@ namespace flyamerica.Helpers
 
             return htmlHelper.ActionLink(navItem.Text, navItem.Action, navItem.Controller, routeValues, attrs);
         }
+
+        public static MvcHtmlString LiSelector(this HtmlHelper htmlHelper, BI.ViewModels.NavItem navItem)
+        {
+            IDictionary<string, object> attrs = new Dictionary<string, object>();
+            string controller = htmlHelper.ViewContext.RouteData.GetRequiredString("controller").ToLower();
+
+            if (navItem.Controller.ToLower() == controller)
+                return new MvcHtmlString("current");
+
+            else return new MvcHtmlString(string.Empty);
+
+        }
     }
 }
