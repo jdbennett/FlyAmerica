@@ -158,6 +158,7 @@ namespace JDB.BI.Content
 
         public static List<BI.ViewModels.FlightTrainingProgram> GetFlightTrainingPrograms()
         {
+            Thread.Sleep(5000);
             List<BI.ViewModels.FlightTrainingProgram> programs = new List<ViewModels.FlightTrainingProgram>();
             List<BI.ViewModels.ParagraphSection> d = new List<BI.ViewModels.ParagraphSection>();
             d.Add(new BI.ViewModels.ParagraphSection { Paragraph = "Lorem ipsum dolor sit amet, consecteturadipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur elit, sed do eius" });

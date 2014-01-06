@@ -702,6 +702,9 @@ footer a:hover{color:#000}
     vertical-align: middle;
     text-align: center;
     left:0;
+    background: url('images/ajax-loader.gif?10102013') no-repeat center bottom;
+    min-height: 100px;
+    min-width: 100px;
 }
 .loadmask-msg
 {
@@ -709,7 +712,6 @@ footer a:hover{color:#000}
 }
 .loadmask-msg div
 {
-    background: url('images/ajax-loader.gif?10102013') no-repeat center bottom;
     cursor: wait;
     min-height: 100px;
     min-width: 100px;
