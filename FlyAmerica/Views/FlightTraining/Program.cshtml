@@ -1,29 +1,65 @@
-﻿@model flyamerica.BI.ViewModels.FlightTrainingProgram
+﻿@model JDB.BI.ViewModels.FlightTrainingProgram
 
 <div class="bg_img"></div>
 
 
 <div class="main">
 	<div class="div-content">  
-	
 	<div class="container_12">
 		<div class="grid_12">		
 			<div class="wrapper marBot2">
 					<h2 class="v5">@Model.ProgramName</h2>
                     @foreach (var item in Model.Descriptions)
                     {
-                        <p class="lh21">@item</p>
+                        if (!string.IsNullOrEmpty(@item.Image))
+                        {
+                            <img class="img3 lf" src="@Url.Content("~/Assets/"+ @item.Image)" />
+                        }                        
+                        <p class="lh21 pAdj">@item.Paragraph</p>
+                        <div style="clear: both;" />
                     }
 			</div>
 		</div>  
 	</div>
+ 
 
+    <div class="container_12 marTop2">
+		<div class="grid_12">
+                 <div id="recentItems" class="grid_6 alpha marRight2"></div>
+                 <div id="testimonials" class="grid_5 omega"></div>			
 
-
-
-
-<!--=======footer=================================-->
-		
-	</div>
+		</div>
+	</div>		
+	
+   </div>
 
 </div>
+
+<script type="text/javascript">
+ $(document).ready(function () { 
+
+            $('#recentItems').mask();
+            $.ajax({
+                    url: '@Url.Action("GetNews", "FlightTraining")',
+                    type: 'GET',
+                    cache: true,
+                    data: 'ID=@Model.ProgramId',
+                }).done(function(result) {
+                        $('#recentItems').html(result);
+                        $('#recentItems').unmask();
+                });
+
+              $('#testimonials').mask();
+              $.ajax({
+                    url: '@Url.Action("GetTestimonials", "FlightTraining")',
+                    type: 'GET',
+                    cache: true,
+                    data: 'ID=@Model.ProgramId',
+                }).done(function(result) {
+                        $('#testimonials').html(result);
+                        $('#testimonials').unmask();
+                });
+
+        });
+</script>
+

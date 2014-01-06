@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace flyamerica {
+namespace FlyAmerica.Web {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace flyamerica {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("flyamerica.LinkText", typeof(LinkText).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FlyAmerica.Web.LinkText", typeof(LinkText).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

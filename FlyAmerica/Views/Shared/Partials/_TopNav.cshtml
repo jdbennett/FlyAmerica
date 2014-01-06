@@ -1,22 +1,22 @@
-﻿@using flyamerica.Helpers
-@model List<flyamerica.BI.ViewModels.NavItem>
+﻿@using FlyAmerica.Helpers
+@model List<JDB.BI.ViewModels.NavItem>
 
 
 <ul class="sf-menu">
-    @foreach(flyamerica.BI.ViewModels.NavItem item in Model)
+    @foreach(JDB.BI.ViewModels.NavItem item in Model)
     {
         <li class="@Html.LiSelector(item)">@Html.ActionLink(item.Text, item.Action, item.Controller)<strong></strong>
         @if(item.SubItems.Count > 0)
         {
             <ul class='submenu'>
-            @foreach (flyamerica.BI.ViewModels.NavItem subitem in item.SubItems)
+            @foreach (JDB.BI.ViewModels.NavItem subitem in item.SubItems)
             {
                 if(subitem.SubItems.Count > 0)
                 {
                     <li class='sub-menu'>
                         @Html.ActionLink(subitem.Text, subitem.Action, subitem.Controller)
                         <ul class='submenu2'>
-                            @foreach(flyamerica.BI.ViewModels.NavItem subsubitem in subitem.SubItems)
+                            @foreach(JDB.BI.ViewModels.NavItem subsubitem in subitem.SubItems)
                             {
                                 <li>@Html.ActionLink(subsubitem.Text, subsubitem.Action, subsubitem.Controller)</li>
                             }

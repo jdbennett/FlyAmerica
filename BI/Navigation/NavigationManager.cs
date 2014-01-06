@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace flyamerica.BI.Navigation
+namespace JDB.BI.Navigation
 {
-    public class NavigationManager
+    public static class NavigationManager
     {
         
 
-        public List<BI.ViewModels.NavItem> GetTopNavItems()
+        public static List<BI.ViewModels.NavItem> GetTopNavItems()
         {
             List<BI.ViewModels.NavItem> items = new List<ViewModels.NavItem>();
             items.Add(new ViewModels.NavItem

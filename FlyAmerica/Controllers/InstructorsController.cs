@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using JDB;
 
-namespace flyamerica.Controllers
+namespace FlyAmerica.Controllers
 {
-    public class InstructorsController : flyamerica.Controllers.BaseController
+    public class InstructorsController : FlyAmerica.Controllers.BaseController
     {
         //
         // GET: /Instructors/
 
         public ActionResult Index()
         {
-            BI.Content.ContentManager cm = new BI.Content.ContentManager();
-            return View(cm.GetInstructors());
+            return View(JDB.BI.Content.ContentManager.GetInstructors());
         }
 
         public ActionResult Instructor(int ID)
         {
-            BI.Content.ContentManager cm = new BI.Content.ContentManager();
-            return View(cm.GetInstructor(ID));
+            return View(JDB.BI.Content.ContentManager.GetInstructor(ID));
         }
 
     }

@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JDB.DAL.Reference
+{
+    public enum NewsItemTypes
+    {
+        FlightTrainingProgram,
+        Instructor,
+        Aircraft,
+        Maintenance
+    }
+}

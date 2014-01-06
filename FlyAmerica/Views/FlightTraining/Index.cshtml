@@ -1,45 +1,39 @@
-﻿@model flyamerica.BI.ViewModels.FlightTraining
+﻿@model JDB.BI.ViewModels.FlightTraining
 
 
-<div class="bg_img"></div>
+<div class="bg_img" style="width:100%; height:217px; background:url('@Url.Content("~/Assets/"+@Model.Image)')center top no-repeat"></div>
 
-<div class="main">
 	<div class="div-content">  
 	
-	    <div class="container_12">
-		<div class="grid_12">
-
-			<div class="wrapper">
-				<div class="grid_6 alpha">
-					<div class="wrapper">
-						<h2 class="v4">@Model.Title</h2>
-						<h3 class="v2">@Model.ShortDescription</h3>
-                        @foreach (string desc in @Model.Descriptions)
-                        {
-                            <p class="p_martop lh21">@desc</p>
-                        }
-						
-					</div>
-
-				</div>
-	
-	
-				<div id="FlightPrograms" class="grid_6 omega"></div>
-			</div>
-		</div>  
-	</div>	
+	        <div class="container_12">
+		    <div class="grid_12">
+			    <div class="wrapper">
+				    <div class="grid_6 alpha">
+					    <div class="wrapper">
+						    <h2 class="v4">@Model.Title</h2>
+						    <h3 class="v2">@Model.ShortDescription</h3>
+                            @foreach (var desc in @Model.Paragraphs)
+                            {
+                                if(!string.IsNullOrEmpty(@desc.Image))
+                                {
+                                    <img class="img1 lf" src="@Url.Content("~/Assets/"+ @desc.Image)" />
+                                }
+                                
+                                <p class="p_martop lh21 pAdj">@desc.Paragraph</p>
+                            }						
+					    </div>
+				    </div>	
+				    <div id="FlightPrograms" class="grid_6 omega"></div>
+			    </div>
+		    </div>  
+	    </div>	
     	
 	</div>
-</div>
+
 
 <script type="text/javascript">
     $(document).ready(function () {
-         $.ajax({
-              url: '@Url.Action("LoadFlightTrainingPrograms", "FlightTraining")',
-              type: 'GET',
-              cache: true,
-                }).done(function(result) {
-                        $('#FlightPrograms').html(result);
-                });
+        $('#FlightPrograms').mask("");
+        $('#FlightPrograms').load('@Url.Action("LoadFlightTrainingPrograms", "FlightTraining")', function (response, status, xhr) { $('#FlightPrograms').unmask(); });
     });
 </script>

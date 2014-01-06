@@ -8,6 +8,7 @@
     @Html.Partial("Partials/_LayoutIncludes")
     <script type="text/javascript">
         $(document).ready(function () {
+        
             $.ajax({
                     url: '@Url.Action("GetTopNav")',
                     type: 'GET',
@@ -15,7 +16,13 @@
                 }).done(function(result) {
                         $('nav').html(result);
                 });
+
         });
+
+            
+
+
+        
 
        
     

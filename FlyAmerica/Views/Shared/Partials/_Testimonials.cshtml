@@ -1,0 +1,62 @@
+﻿@model List<JDB.BI.ViewModels.Testimonial>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //  Responsive layout, resizing the items
+        $('#carousel').carouFredSel({
+            auto: false,
+            responsive: true,
+            width: '100%',
+            scroll: 1,
+            prev: '#prev',
+            next: '#next',
+            pagination: false,
+            mousewheel: false,
+            swipe: {
+                onMouse: true,
+                onTouch: true
+            },
+            items: {
+                width: 320,
+                height: 'auto',   //  optionally resize item-height
+                visible: {
+                    min: 1,
+                    max: 1
+                }
+            }
+        });
+    });
+</script>
+
+<h2 class="v3 mobile_mar_top">Testimonials</h2>               
+@{
+  <div class="list_carousel responsive">
+	 <ul id="carousel">  
+              @foreach (var item in Model)
+               {
+                  <li>
+							<blockquote>
+								<div class="inner">
+									<p>"@item.Quote"</p>
+								</div>
+							</blockquote>
+							<div class="wrapper under_quote">
+								<p class="color2 fs14"><span class="color1">@item.Author</span></p>
+							</div>
+						</li>
+       
+               }
+
+               
+					  </ul>
+					  <div class="clear"></div>
+					  <a class="prev" id="prev"  href="javascript:;"></a>
+					  <a class="next" id="next"  href="javascript:;"></a> 
+					</div>
+
+
+}
+
+				
+						
+
+						

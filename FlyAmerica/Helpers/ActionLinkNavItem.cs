@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Mvc.Html;
+using JDB;
 
-namespace flyamerica.Helpers
+namespace FlyAmerica.Helpers
 {
     public static class ActionLinkNavItem
     {
-        public static MvcHtmlString NavItem(this HtmlHelper htmlHelper, BI.ViewModels.NavItem navItem, RouteValueDictionary routeValues, bool resolveControllerNameOnly = true)
+        public static MvcHtmlString NavItem(this HtmlHelper htmlHelper, JDB.BI.ViewModels.NavItem navItem, RouteValueDictionary routeValues, bool resolveControllerNameOnly = true)
         {
             IDictionary<string, object> attrs = new Dictionary<string, object>();
 
@@ -23,7 +24,7 @@ namespace flyamerica.Helpers
             return htmlHelper.ActionLink(navItem.Text, navItem.Action, navItem.Controller, routeValues, attrs);
         }
 
-        public static MvcHtmlString LiSelector(this HtmlHelper htmlHelper, BI.ViewModels.NavItem navItem)
+        public static MvcHtmlString LiSelector(this HtmlHelper htmlHelper, JDB.BI.ViewModels.NavItem navItem)
         {
             IDictionary<string, object> attrs = new Dictionary<string, object>();
             string controller = htmlHelper.ViewContext.RouteData.GetRequiredString("controller").ToLower();

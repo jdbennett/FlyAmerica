@@ -3,33 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using JDB;
 
-namespace flyamerica.Controllers
+namespace FlyAmerica.Controllers
 {
-    public class HomeController : flyamerica.Controllers.BaseController
+    public class HomeController : FlyAmerica.Controllers.BaseController
     {
         //
         // GET: /Home/
 
         public ActionResult Index()
         {
-            return View();
+            
+            return View(JDB.BI.Content.ContentManager.GetHomePage());
         }
 
-        public ActionResult LoadSlider()
-        {
-            flyamerica.BI.Content.ContentManager cm = new BI.Content.ContentManager();
-            List<flyamerica.BI.ViewModels.SliderImage> model = new List<BI.ViewModels.SliderImage>();
-            model = cm.GetHomePageSliderImages();
-            return PartialView("Partials/_slider", model);
-        }
 
-        public ActionResult LoadFeaturedContent()
+        public ActionResult LoadMainContent()
         {
-            flyamerica.BI.Content.ContentManager cm = new BI.Content.ContentManager();
-            List<BI.ViewModels.FeaturedContent> model = new List<BI.ViewModels.FeaturedContent>();
-            model = cm.GetFeaturedContent();
-            return PartialView("Partials/_FeaturedContent", model);
+            return PartialView("Partials/_MainContent", JDB.BI.Content.ContentManager.GetMainContent());
 
         }
     }

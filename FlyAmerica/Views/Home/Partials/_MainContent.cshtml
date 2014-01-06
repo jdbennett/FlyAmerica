@@ -1,0 +1,59 @@
+﻿@model JDB.BI.ViewModels.MainContent
+
+
+@{
+
+    if (Model.Items.Count() > 0)
+    {
+                <div id="contentItems">
+                @foreach (var item in Model.Items)
+                {
+                    <div class="grid_4 mcMarRght mcItem">
+
+                          <img src="@Url.Content("~/Assets/"+@item.Image)" alt="" class="no_resize img1"/>
+	                      <h2 class="v2">@item.Title</h2>
+		                  <p class="lh21 mcPhgt">@item.Description</p>
+                          @Html.ActionLink("More", @item.Action, @item.Controller, null, new { @class = "more_btn gradient" })
+
+                    </div>
+                }
+        
+
+                </div>
+                <div class="clear"></div>
+                 <a class="prevMc" id="prevMc"  href="javascript:;"></a>
+	             <a class="nextMc" id="nextMc"  href="javascript:;"></a>
+
+    
+            
+            
+    }
+ }
+
+                      <script type="text/javascript">
+                          $(document).ready(function () {
+                              //  Responsive layout, resizing the items
+                              $('#contentItems').carouFredSel({
+                                  auto: false,
+                                  responsive: true,
+                                  width: '100%',
+                                  scroll: @Model.Scroll,
+                                  prev: '#prevMc',
+                                  next: '#nextMc',
+                                  pagination: @Model.Paginate.ToString().ToLower(),
+                                  mousewheel: @Model.Mousewheel.ToString().ToLower(),
+                                  swipe: {
+                                      onMouse: true,
+                                      onTouch: true
+                                  },
+                                  items: {
+                                      width: 300,
+                                      height: 'auto',   //  optionally resize item-height
+                                      visible: {
+                                          min: @Model.ItemVisibleMin,
+                                          max: @Model.ItemVisibleMax
+                                      }
+                                  }
+                              });
+                          });
+                        </script> 

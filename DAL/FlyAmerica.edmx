@@ -4,52 +4,526 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="flyamericaModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="flyamericaModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="flyamericaModelStoreContainer">
-          <EntitySet Name="pilottrainings" EntityType="flyamericaModel.Store.pilottrainings" store:Type="Tables" Schema="flyamerica" />
+          <EntitySet Name="application_page" EntityType="flyamericaModel.Store.application_page" store:Type="Tables" Schema="flyamerica" />
+          <EntitySet Name="application_page_component" EntityType="flyamericaModel.Store.application_page_component" store:Type="Tables" Schema="flyamerica" />
+          <EntitySet Name="application_page_component_setting" EntityType="flyamericaModel.Store.application_page_component_setting" store:Type="Tables" Schema="flyamerica" />
+          <EntitySet Name="application_page_setting" EntityType="flyamericaModel.Store.application_page_setting" store:Type="Tables" Schema="flyamerica" />
+          <EntitySet Name="application_page_setting_type" EntityType="flyamericaModel.Store.application_page_setting_type" store:Type="Tables" Schema="flyamerica" />
+          <EntitySet Name="asset" EntityType="flyamericaModel.Store.asset" store:Type="Tables" Schema="flyamerica" />
+          <EntitySet Name="component_image" EntityType="flyamericaModel.Store.component_image" store:Type="Tables" Schema="flyamerica" />
+          <EntitySet Name="content_paragraph" EntityType="flyamericaModel.Store.content_paragraph" store:Type="Tables" Schema="flyamerica" />
+          <EntitySet Name="main_content_item" EntityType="flyamericaModel.Store.main_content_item" store:Type="Tables" Schema="flyamerica" />
+          <AssociationSet Name="component_image_application_page_component_fk" Association="flyamericaModel.Store.component_image_application_page_component_fk">
+            <End Role="application_page_component" EntitySet="application_page_component" />
+            <End Role="component_image" EntitySet="component_image" />
+          </AssociationSet>
+          <AssociationSet Name="component_Setting_application_page_component_fk" Association="flyamericaModel.Store.component_Setting_application_page_component_fk">
+            <End Role="application_page_component" EntitySet="application_page_component" />
+            <End Role="application_page_component_setting" EntitySet="application_page_component_setting" />
+          </AssociationSet>
+          <AssociationSet Name="component_Setting_setting_type_fk" Association="flyamericaModel.Store.component_Setting_setting_type_fk">
+            <End Role="application_page_setting_type" EntitySet="application_page_setting_type" />
+            <End Role="application_page_component_setting" EntitySet="application_page_component_setting" />
+          </AssociationSet>
+          <AssociationSet Name="main_content_item_application_page_fk" Association="flyamericaModel.Store.main_content_item_application_page_fk">
+            <End Role="application_page" EntitySet="application_page" />
+            <End Role="main_content_item" EntitySet="main_content_item" />
+          </AssociationSet>
+          <AssociationSet Name="setting_setting_type_fk" Association="flyamericaModel.Store.setting_setting_type_fk">
+            <End Role="application_page_setting_type" EntitySet="application_page_setting_type" />
+            <End Role="application_page_setting" EntitySet="application_page_setting" />
+          </AssociationSet>
+          <AssociationSet Name="slider_image_asset_fk" Association="flyamericaModel.Store.slider_image_asset_fk">
+            <End Role="asset" EntitySet="asset" />
+            <End Role="component_image" EntitySet="component_image" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="pilottrainings">
+        <!--Errors Found During Generation:
+      warning 6035: The relationship 'component_application_page_fk' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      warning 6035: The relationship 'setting_application_page_fk' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      -->
+        <EntityType Name="application_page">
           <Key>
-            <PropertyRef Name="TrainingId" />
+            <PropertyRef Name="page_name" />
+            <PropertyRef Name="page_controller" />
+            <PropertyRef Name="page_action" />
           </Key>
-          <Property Name="TrainingId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TrainingName" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="TrainingShortDescription" Type="varchar" Nullable="false" MaxLength="350" />
-          <Property Name="TrainingLongDescription" Type="varchar" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="page_name" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="page_controller" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="page_action" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="page_link_text" Type="varchar" Nullable="false" MaxLength="25" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityType Name="application_page_component">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="component" />
+          </Key>
+          <Property Name="page" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="component" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="application_page_component_setting">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="component" />
+            <PropertyRef Name="setting" />
+          </Key>
+          <Property Name="page" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="component" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="setting" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="value" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="setting_type" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="application_page_setting">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="setting" />
+          </Key>
+          <Property Name="page" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="setting" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="value" Type="varchar" Nullable="false" />
+          <Property Name="setting_type" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="application_page_setting_type">
+          <Key>
+            <PropertyRef Name="setting_type" />
+          </Key>
+          <Property Name="setting_type" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="asset">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="asset_name" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+          <Property Name="extension" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="component_image">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="component" />
+            <PropertyRef Name="asset" />
+          </Key>
+          <Property Name="page" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="component" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="asset" Type="int" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="content_paragraph">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="asset" Type="int" />
+        </EntityType>
+        <EntityType Name="main_content_item">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="controller" />
+            <PropertyRef Name="action" />
+          </Key>
+          <Property Name="page" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="controller" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="action" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="short_description" Type="varchar" MaxLength="250" />
+          <Property Name="sequence" Type="int" />
+          <Property Name="asset" Type="int" />
+          <Property Name="active" Type="bit" />
+        </EntityType>
+        <Association Name="component_image_application_page_component_fk">
+          <End Role="application_page_component" Type="flyamericaModel.Store.application_page_component" Multiplicity="1" />
+          <End Role="component_image" Type="flyamericaModel.Store.component_image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application_page_component">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="component" />
+            </Principal>
+            <Dependent Role="component_image">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="component_Setting_application_page_component_fk">
+          <End Role="application_page_component" Type="flyamericaModel.Store.application_page_component" Multiplicity="1" />
+          <End Role="application_page_component_setting" Type="flyamericaModel.Store.application_page_component_setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application_page_component">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="component" />
+            </Principal>
+            <Dependent Role="application_page_component_setting">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="component_Setting_setting_type_fk">
+          <End Role="application_page_setting_type" Type="flyamericaModel.Store.application_page_setting_type" Multiplicity="1" />
+          <End Role="application_page_component_setting" Type="flyamericaModel.Store.application_page_component_setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application_page_setting_type">
+              <PropertyRef Name="setting_type" />
+            </Principal>
+            <Dependent Role="application_page_component_setting">
+              <PropertyRef Name="setting_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="main_content_item_application_page_fk">
+          <End Role="application_page" Type="flyamericaModel.Store.application_page" Multiplicity="1" />
+          <End Role="main_content_item" Type="flyamericaModel.Store.main_content_item" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="application_page">
+              <PropertyRef Name="page_name" />
+              <PropertyRef Name="page_controller" />
+              <PropertyRef Name="page_action" />
+            </Principal>
+            <Dependent Role="main_content_item">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="controller" />
+              <PropertyRef Name="action" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="setting_setting_type_fk">
+          <End Role="application_page_setting_type" Type="flyamericaModel.Store.application_page_setting_type" Multiplicity="1" />
+          <End Role="application_page_setting" Type="flyamericaModel.Store.application_page_setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application_page_setting_type">
+              <PropertyRef Name="setting_type" />
+            </Principal>
+            <Dependent Role="application_page_setting">
+              <PropertyRef Name="setting_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="slider_image_asset_fk">
+          <End Role="asset" Type="flyamericaModel.Store.asset" Multiplicity="1" />
+          <End Role="component_image" Type="flyamericaModel.Store.component_image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asset">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="component_image">
+              <PropertyRef Name="asset" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="flyamericaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="flyamericaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="pilottrainings" EntityType="flyamericaModel.pilottraining" />
+          <EntitySet Name="application_page" EntityType="flyamericaModel.application_page" />
+          <EntitySet Name="application_page_component" EntityType="flyamericaModel.application_page_component" />
+          <EntitySet Name="application_page_component_setting" EntityType="flyamericaModel.application_page_component_setting" />
+          <EntitySet Name="application_page_setting" EntityType="flyamericaModel.application_page_setting" />
+          <EntitySet Name="application_page_setting_type" EntityType="flyamericaModel.application_page_setting_type" />
+          <EntitySet Name="assets" EntityType="flyamericaModel.asset" />
+          <EntitySet Name="component_image" EntityType="flyamericaModel.component_image" />
+          <EntitySet Name="main_content_item" EntityType="flyamericaModel.main_content_item" />
+          <AssociationSet Name="main_content_item_application_page_fk" Association="flyamericaModel.main_content_item_application_page_fk">
+            <End Role="application_page" EntitySet="application_page" />
+            <End Role="main_content_item" EntitySet="main_content_item" />
+          </AssociationSet>
+          <AssociationSet Name="component_image_application_page_component_fk" Association="flyamericaModel.component_image_application_page_component_fk">
+            <End Role="application_page_component" EntitySet="application_page_component" />
+            <End Role="component_image" EntitySet="component_image" />
+          </AssociationSet>
+          <AssociationSet Name="component_Setting_application_page_component_fk" Association="flyamericaModel.component_Setting_application_page_component_fk">
+            <End Role="application_page_component" EntitySet="application_page_component" />
+            <End Role="application_page_component_setting" EntitySet="application_page_component_setting" />
+          </AssociationSet>
+          <AssociationSet Name="component_Setting_setting_type_fk" Association="flyamericaModel.component_Setting_setting_type_fk">
+            <End Role="application_page_setting_type" EntitySet="application_page_setting_type" />
+            <End Role="application_page_component_setting" EntitySet="application_page_component_setting" />
+          </AssociationSet>
+          <AssociationSet Name="setting_setting_type_fk" Association="flyamericaModel.setting_setting_type_fk">
+            <End Role="application_page_setting_type" EntitySet="application_page_setting_type" />
+            <End Role="application_page_setting" EntitySet="application_page_setting" />
+          </AssociationSet>
+          <AssociationSet Name="slider_image_asset_fk" Association="flyamericaModel.slider_image_asset_fk">
+            <End Role="asset" EntitySet="assets" />
+            <End Role="component_image" EntitySet="component_image" />
+          </AssociationSet>
+          <EntitySet Name="content_paragraph" EntityType="flyamericaModel.content_paragraph" />
         </EntityContainer>
-        <EntityType Name="pilottraining">
+        <EntityType Name="application_page">
           <Key>
-            <PropertyRef Name="TrainingId" />
+            <PropertyRef Name="page_name" />
+            <PropertyRef Name="page_controller" />
+            <PropertyRef Name="page_action" />
           </Key>
-          <Property Name="TrainingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TrainingName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="TrainingShortDescription" Type="String" Nullable="false" MaxLength="350" Unicode="false" FixedLength="false" />
-          <Property Name="TrainingLongDescription" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Type="String" Name="page_name" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="page_controller" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="page_action" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="page_link_text" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="main_content_item" Relationship="flyamericaModel.main_content_item_application_page_fk" FromRole="application_page" ToRole="main_content_item" />
         </EntityType>
-      </Schema>
+        <EntityType Name="application_page_component">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="component" />
+          </Key>
+          <Property Type="String" Name="page" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="component" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="component_image" Relationship="flyamericaModel.component_image_application_page_component_fk" FromRole="application_page_component" ToRole="component_image" />
+          <NavigationProperty Name="application_page_component_setting" Relationship="flyamericaModel.component_Setting_application_page_component_fk" FromRole="application_page_component" ToRole="application_page_component_setting" />
+        </EntityType>
+        <EntityType Name="application_page_component_setting">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="component" />
+            <PropertyRef Name="setting" />
+          </Key>
+          <Property Type="String" Name="page" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="component" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="setting" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="value" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="setting_type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="application_page_component" Relationship="flyamericaModel.component_Setting_application_page_component_fk" FromRole="application_page_component_setting" ToRole="application_page_component" />
+          <NavigationProperty Name="application_page_setting_type" Relationship="flyamericaModel.component_Setting_setting_type_fk" FromRole="application_page_component_setting" ToRole="application_page_setting_type" />
+        </EntityType>
+        <EntityType Name="application_page_setting">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="setting" />
+          </Key>
+          <Property Type="String" Name="page" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="setting" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="value" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="setting_type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="application_page_setting_type" Relationship="flyamericaModel.setting_setting_type_fk" FromRole="application_page_setting" ToRole="application_page_setting_type" />
+        </EntityType>
+        <EntityType Name="application_page_setting_type">
+          <Key>
+            <PropertyRef Name="setting_type" />
+          </Key>
+          <Property Type="String" Name="setting_type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="application_page_component_setting" Relationship="flyamericaModel.component_Setting_setting_type_fk" FromRole="application_page_setting_type" ToRole="application_page_component_setting" />
+          <NavigationProperty Name="application_page_setting" Relationship="flyamericaModel.setting_setting_type_fk" FromRole="application_page_setting_type" ToRole="application_page_setting" />
+        </EntityType>
+        <EntityType Name="asset">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="asset_name" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="description" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="extension" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="component_image" Relationship="flyamericaModel.slider_image_asset_fk" FromRole="asset" ToRole="component_image" />
+        </EntityType>
+        <EntityType Name="component_image">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="component" />
+            <PropertyRef Name="asset" />
+          </Key>
+          <Property Type="String" Name="page" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="component" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="asset" Nullable="false" />
+          <Property Type="Boolean" Name="isActive" Nullable="false" />
+          <NavigationProperty Name="application_page_component" Relationship="flyamericaModel.component_image_application_page_component_fk" FromRole="component_image" ToRole="application_page_component" />
+          <NavigationProperty Name="asset1" Relationship="flyamericaModel.slider_image_asset_fk" FromRole="component_image" ToRole="asset" />
+        </EntityType>
+        <EntityType Name="main_content_item">
+          <Key>
+            <PropertyRef Name="page" />
+            <PropertyRef Name="controller" />
+            <PropertyRef Name="action" />
+          </Key>
+          <Property Type="String" Name="page" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="controller" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="action" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="short_description" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="asset" />
+          <NavigationProperty Name="application_page" Relationship="flyamericaModel.main_content_item_application_page_fk" FromRole="main_content_item" ToRole="application_page" />
+          <Property Type="Int32" Name="sequence" />
+          <Property Type="Boolean" Name="active" />
+        </EntityType>
+        <Association Name="main_content_item_application_page_fk">
+          <End Type="flyamericaModel.application_page" Role="application_page" Multiplicity="1" />
+          <End Type="flyamericaModel.main_content_item" Role="main_content_item" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="application_page">
+              <PropertyRef Name="page_name" />
+              <PropertyRef Name="page_controller" />
+              <PropertyRef Name="page_action" />
+            </Principal>
+            <Dependent Role="main_content_item">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="controller" />
+              <PropertyRef Name="action" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="component_image_application_page_component_fk">
+          <End Type="flyamericaModel.application_page_component" Role="application_page_component" Multiplicity="1" />
+          <End Type="flyamericaModel.component_image" Role="component_image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application_page_component">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="component" />
+            </Principal>
+            <Dependent Role="component_image">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="component_Setting_application_page_component_fk">
+          <End Type="flyamericaModel.application_page_component" Role="application_page_component" Multiplicity="1" />
+          <End Type="flyamericaModel.application_page_component_setting" Role="application_page_component_setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application_page_component">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="component" />
+            </Principal>
+            <Dependent Role="application_page_component_setting">
+              <PropertyRef Name="page" />
+              <PropertyRef Name="component" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="component_Setting_setting_type_fk">
+          <End Type="flyamericaModel.application_page_setting_type" Role="application_page_setting_type" Multiplicity="1" />
+          <End Type="flyamericaModel.application_page_component_setting" Role="application_page_component_setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application_page_setting_type">
+              <PropertyRef Name="setting_type" />
+            </Principal>
+            <Dependent Role="application_page_component_setting">
+              <PropertyRef Name="setting_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="setting_setting_type_fk">
+          <End Type="flyamericaModel.application_page_setting_type" Role="application_page_setting_type" Multiplicity="1" />
+          <End Type="flyamericaModel.application_page_setting" Role="application_page_setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="application_page_setting_type">
+              <PropertyRef Name="setting_type" />
+            </Principal>
+            <Dependent Role="application_page_setting">
+              <PropertyRef Name="setting_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="slider_image_asset_fk">
+          <End Type="flyamericaModel.asset" Role="asset" Multiplicity="1" />
+          <End Type="flyamericaModel.component_image" Role="component_image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="asset">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="component_image">
+              <PropertyRef Name="asset" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="content_paragraph">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="text" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="asset" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="flyamericaModelStoreContainer" CdmEntityContainer="flyamericaEntities">
-          <EntitySetMapping Name="pilottrainings">
-            <EntityTypeMapping TypeName="flyamericaModel.pilottraining">
-              <MappingFragment StoreEntitySet="pilottrainings">
-                <ScalarProperty Name="TrainingId" ColumnName="TrainingId" />
-                <ScalarProperty Name="TrainingName" ColumnName="TrainingName" />
-                <ScalarProperty Name="TrainingShortDescription" ColumnName="TrainingShortDescription" />
-                <ScalarProperty Name="TrainingLongDescription" ColumnName="TrainingLongDescription" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <EntitySetMapping Name="application_page">
+            <EntityTypeMapping TypeName="flyamericaModel.application_page">
+              <MappingFragment StoreEntitySet="application_page">
+                <ScalarProperty Name="page_link_text" ColumnName="page_link_text" />
+                <ScalarProperty Name="page_action" ColumnName="page_action" />
+                <ScalarProperty Name="page_controller" ColumnName="page_controller" />
+                <ScalarProperty Name="page_name" ColumnName="page_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="application_page_component">
+            <EntityTypeMapping TypeName="flyamericaModel.application_page_component">
+              <MappingFragment StoreEntitySet="application_page_component">
+                <ScalarProperty Name="component" ColumnName="component" />
+                <ScalarProperty Name="page" ColumnName="page" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="application_page_component_setting">
+            <EntityTypeMapping TypeName="flyamericaModel.application_page_component_setting">
+              <MappingFragment StoreEntitySet="application_page_component_setting">
+                <ScalarProperty Name="setting_type" ColumnName="setting_type" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="setting" ColumnName="setting" />
+                <ScalarProperty Name="component" ColumnName="component" />
+                <ScalarProperty Name="page" ColumnName="page" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="application_page_setting">
+            <EntityTypeMapping TypeName="flyamericaModel.application_page_setting">
+              <MappingFragment StoreEntitySet="application_page_setting">
+                <ScalarProperty Name="setting_type" ColumnName="setting_type" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="setting" ColumnName="setting" />
+                <ScalarProperty Name="page" ColumnName="page" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="application_page_setting_type">
+            <EntityTypeMapping TypeName="flyamericaModel.application_page_setting_type">
+              <MappingFragment StoreEntitySet="application_page_setting_type">
+                <ScalarProperty Name="setting_type" ColumnName="setting_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assets">
+            <EntityTypeMapping TypeName="flyamericaModel.asset">
+              <MappingFragment StoreEntitySet="asset">
+                <ScalarProperty Name="extension" ColumnName="extension" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="asset_name" ColumnName="asset_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="component_image">
+            <EntityTypeMapping TypeName="flyamericaModel.component_image">
+              <MappingFragment StoreEntitySet="component_image">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="asset" ColumnName="asset" />
+                <ScalarProperty Name="component" ColumnName="component" />
+                <ScalarProperty Name="page" ColumnName="page" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="main_content_item">
+            <EntityTypeMapping TypeName="flyamericaModel.main_content_item">
+              <MappingFragment StoreEntitySet="main_content_item">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="sequence" ColumnName="sequence" />
+                <ScalarProperty Name="asset" ColumnName="asset" />
+                <ScalarProperty Name="short_description" ColumnName="short_description" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="controller" ColumnName="controller" />
+                <ScalarProperty Name="page" ColumnName="page" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="content_paragraph">
+            <EntityTypeMapping TypeName="flyamericaModel.content_paragraph">
+              <MappingFragment StoreEntitySet="content_paragraph">
+                <ScalarProperty Name="asset" ColumnName="asset" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -74,7 +548,53 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="FlyAmerica">
-        <EntityTypeShape EntityType="flyamericaModel.pilottraining" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="flyamericaModel.application_page" Width="1.5" PointX="5.75" PointY="2.125" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="flyamericaModel.application_page_component" Width="1.5" PointX="0.75" PointY="4" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="flyamericaModel.application_page_component_setting" Width="1.5" PointX="3" PointY="3.625" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="flyamericaModel.application_page_setting" Width="1.5" PointX="3" PointY="7.625" Height="1.9802864583333353" />
+        <EntityTypeShape EntityType="flyamericaModel.application_page_setting_type" Width="1.5" PointX="0.75" PointY="1" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="flyamericaModel.asset" Width="1.5" PointX="0.75" PointY="6.625" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="flyamericaModel.component_image" Width="1.5" PointX="3" PointY="0.75" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="flyamericaModel.main_content_item" Width="1.5" PointX="8" PointY="2" Height="2.1725878906250031" />
+        <AssociationConnector Association="flyamericaModel.main_content_item_application_page_fk" >
+          <ConnectorPoint PointX="7.25" PointY="3.1151432291666659" />
+          <ConnectorPoint PointX="8" PointY="3.1151432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="flyamericaModel.component_image_application_page_component_fk" >
+          <ConnectorPoint PointX="2.25" PointY="4" />
+          <ConnectorPoint PointX="2.625" PointY="3.625" />
+          <ConnectorPoint PointX="2.625" PointY="1.836293945312498" />
+          <ConnectorPoint PointX="3" PointY="1.836293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="flyamericaModel.component_Setting_application_page_component_fk" >
+          <ConnectorPoint PointX="2.25" PointY="4.9252450130208345" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="4.9252450130208336" />
+          <ConnectorPoint PointX="2.8645833333333335" PointY="4.9252450130208345" />
+          <ConnectorPoint PointX="3" PointY="4.9252450130208345" />
+        </AssociationConnector>
+        <AssociationConnector Association="flyamericaModel.component_Setting_setting_type_fk" >
+          <ConnectorPoint PointX="2.25" PointY="2.5702979783653874" />
+          <ConnectorPoint PointX="2.5660744349011217" PointY="2.8863724132665078" />
+          <ConnectorPoint PointX="2.7464255650988791" PointY="3.0667235434642666" />
+          <ConnectorPoint PointX="2.875" PointY="3.1952979783653874" />
+          <ConnectorPoint PointX="2.875" PointY="4.243870506510417" />
+          <ConnectorPoint PointX="3" PointY="4.243870506510417" />
+        </AssociationConnector>
+        <AssociationConnector Association="flyamericaModel.setting_setting_type_fk" >
+          <ConnectorPoint PointX="2.25" PointY="2.5887595168269262" />
+          <ConnectorPoint PointX="2.5660744349011217" PointY="2.9048339517280466" />
+          <ConnectorPoint PointX="2.7464255650988791" PointY="3.0851850819258053" />
+          <ConnectorPoint PointX="2.78125" PointY="3.1200095168269262" />
+          <ConnectorPoint PointX="2.78125" PointY="8.6151432291666676" />
+          <ConnectorPoint PointX="3" PointY="8.6151432291666676" />
+        </AssociationConnector>
+        <AssociationConnector Association="flyamericaModel.slider_image_asset_fk" >
+          <ConnectorPoint PointX="2.25" PointY="6.6873066923076925" />
+          <ConnectorPoint PointX="2.6875" PointY="6.2498066923076934" />
+          <ConnectorPoint PointX="2.6875" PointY="2.4106929179687477" />
+          <ConnectorPoint PointX="3" PointY="2.4106929179687477" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="flyamericaModel.content_paragraph" Width="1.5" PointX="5.375" PointY="5.75" Height="1.5956835937499996" />
       </Diagram>
     </Diagrams>
   </Designer>

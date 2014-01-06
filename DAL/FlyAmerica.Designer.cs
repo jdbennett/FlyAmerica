@@ -17,7 +17,18 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-namespace flyamerica.DAL
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("flyamericaModel", "main_content_item_application_page_fk", "application_page", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(JDB.DAL.application_page), "main_content_item", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(JDB.DAL.main_content_item), true)]
+[assembly: EdmRelationshipAttribute("flyamericaModel", "component_image_application_page_component_fk", "application_page_component", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(JDB.DAL.application_page_component), "component_image", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(JDB.DAL.component_image), true)]
+[assembly: EdmRelationshipAttribute("flyamericaModel", "component_Setting_application_page_component_fk", "application_page_component", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(JDB.DAL.application_page_component), "application_page_component_setting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(JDB.DAL.application_page_component_setting), true)]
+[assembly: EdmRelationshipAttribute("flyamericaModel", "component_Setting_setting_type_fk", "application_page_setting_type", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(JDB.DAL.application_page_setting_type), "application_page_component_setting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(JDB.DAL.application_page_component_setting), true)]
+[assembly: EdmRelationshipAttribute("flyamericaModel", "setting_setting_type_fk", "application_page_setting_type", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(JDB.DAL.application_page_setting_type), "application_page_setting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(JDB.DAL.application_page_setting), true)]
+[assembly: EdmRelationshipAttribute("flyamericaModel", "slider_image_asset_fk", "asset", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(JDB.DAL.asset), "component_image", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(JDB.DAL.component_image), true)]
+
+#endregion
+
+namespace JDB.DAL
 {
     #region Contexts
     
@@ -68,29 +79,221 @@ namespace flyamerica.DAL
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<pilottraining> pilottrainings
+        public ObjectSet<application_page> application_page
         {
             get
             {
-                if ((_pilottrainings == null))
+                if ((_application_page == null))
                 {
-                    _pilottrainings = base.CreateObjectSet<pilottraining>("pilottrainings");
+                    _application_page = base.CreateObjectSet<application_page>("application_page");
                 }
-                return _pilottrainings;
+                return _application_page;
             }
         }
-        private ObjectSet<pilottraining> _pilottrainings;
+        private ObjectSet<application_page> _application_page;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<application_page_component> application_page_component
+        {
+            get
+            {
+                if ((_application_page_component == null))
+                {
+                    _application_page_component = base.CreateObjectSet<application_page_component>("application_page_component");
+                }
+                return _application_page_component;
+            }
+        }
+        private ObjectSet<application_page_component> _application_page_component;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<application_page_component_setting> application_page_component_setting
+        {
+            get
+            {
+                if ((_application_page_component_setting == null))
+                {
+                    _application_page_component_setting = base.CreateObjectSet<application_page_component_setting>("application_page_component_setting");
+                }
+                return _application_page_component_setting;
+            }
+        }
+        private ObjectSet<application_page_component_setting> _application_page_component_setting;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<application_page_setting> application_page_setting
+        {
+            get
+            {
+                if ((_application_page_setting == null))
+                {
+                    _application_page_setting = base.CreateObjectSet<application_page_setting>("application_page_setting");
+                }
+                return _application_page_setting;
+            }
+        }
+        private ObjectSet<application_page_setting> _application_page_setting;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<application_page_setting_type> application_page_setting_type
+        {
+            get
+            {
+                if ((_application_page_setting_type == null))
+                {
+                    _application_page_setting_type = base.CreateObjectSet<application_page_setting_type>("application_page_setting_type");
+                }
+                return _application_page_setting_type;
+            }
+        }
+        private ObjectSet<application_page_setting_type> _application_page_setting_type;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<asset> assets
+        {
+            get
+            {
+                if ((_assets == null))
+                {
+                    _assets = base.CreateObjectSet<asset>("assets");
+                }
+                return _assets;
+            }
+        }
+        private ObjectSet<asset> _assets;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<component_image> component_image
+        {
+            get
+            {
+                if ((_component_image == null))
+                {
+                    _component_image = base.CreateObjectSet<component_image>("component_image");
+                }
+                return _component_image;
+            }
+        }
+        private ObjectSet<component_image> _component_image;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<main_content_item> main_content_item
+        {
+            get
+            {
+                if ((_main_content_item == null))
+                {
+                    _main_content_item = base.CreateObjectSet<main_content_item>("main_content_item");
+                }
+                return _main_content_item;
+            }
+        }
+        private ObjectSet<main_content_item> _main_content_item;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<content_paragraph> content_paragraph
+        {
+            get
+            {
+                if ((_content_paragraph == null))
+                {
+                    _content_paragraph = base.CreateObjectSet<content_paragraph>("content_paragraph");
+                }
+                return _content_paragraph;
+            }
+        }
+        private ObjectSet<content_paragraph> _content_paragraph;
 
         #endregion
 
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the pilottrainings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the application_page EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddTopilottrainings(pilottraining pilottraining)
+        public void AddToapplication_page(application_page application_page)
         {
-            base.AddObject("pilottrainings", pilottraining);
+            base.AddObject("application_page", application_page);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the application_page_component EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToapplication_page_component(application_page_component application_page_component)
+        {
+            base.AddObject("application_page_component", application_page_component);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the application_page_component_setting EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToapplication_page_component_setting(application_page_component_setting application_page_component_setting)
+        {
+            base.AddObject("application_page_component_setting", application_page_component_setting);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the application_page_setting EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToapplication_page_setting(application_page_setting application_page_setting)
+        {
+            base.AddObject("application_page_setting", application_page_setting);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the application_page_setting_type EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToapplication_page_setting_type(application_page_setting_type application_page_setting_type)
+        {
+            base.AddObject("application_page_setting_type", application_page_setting_type);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the assets EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToassets(asset asset)
+        {
+            base.AddObject("assets", asset);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the component_image EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTocomponent_image(component_image component_image)
+        {
+            base.AddObject("component_image", component_image);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the main_content_item EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTomain_content_item(main_content_item main_content_item)
+        {
+            base.AddObject("main_content_item", main_content_item);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the content_paragraph EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTocontent_paragraph(content_paragraph content_paragraph)
+        {
+            base.AddObject("content_paragraph", content_paragraph);
         }
 
         #endregion
@@ -104,30 +307,28 @@ namespace flyamerica.DAL
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="pilottraining")]
+    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="application_page")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class pilottraining : EntityObject
+    public partial class application_page : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new pilottraining object.
+        /// Create a new application_page object.
         /// </summary>
-        /// <param name="trainingId">Initial value of the TrainingId property.</param>
-        /// <param name="trainingName">Initial value of the TrainingName property.</param>
-        /// <param name="trainingShortDescription">Initial value of the TrainingShortDescription property.</param>
-        /// <param name="trainingLongDescription">Initial value of the TrainingLongDescription property.</param>
-        /// <param name="isActive">Initial value of the IsActive property.</param>
-        public static pilottraining Createpilottraining(global::System.Int32 trainingId, global::System.String trainingName, global::System.String trainingShortDescription, global::System.String trainingLongDescription, global::System.Boolean isActive)
+        /// <param name="page_name">Initial value of the page_name property.</param>
+        /// <param name="page_controller">Initial value of the page_controller property.</param>
+        /// <param name="page_action">Initial value of the page_action property.</param>
+        /// <param name="page_link_text">Initial value of the page_link_text property.</param>
+        public static application_page Createapplication_page(global::System.String page_name, global::System.String page_controller, global::System.String page_action, global::System.String page_link_text)
         {
-            pilottraining pilottraining = new pilottraining();
-            pilottraining.TrainingId = trainingId;
-            pilottraining.TrainingName = trainingName;
-            pilottraining.TrainingShortDescription = trainingShortDescription;
-            pilottraining.TrainingLongDescription = trainingLongDescription;
-            pilottraining.IsActive = isActive;
-            return pilottraining;
+            application_page application_page = new application_page();
+            application_page.page_name = page_name;
+            application_page.page_controller = page_controller;
+            application_page.page_action = page_action;
+            application_page.page_link_text = page_link_text;
+            return application_page;
         }
 
         #endregion
@@ -139,127 +340,1555 @@ namespace flyamerica.DAL
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 TrainingId
+        public global::System.String page_name
         {
             get
             {
-                return _TrainingId;
+                return _page_name;
             }
             set
             {
-                if (_TrainingId != value)
+                if (_page_name != value)
                 {
-                    OnTrainingIdChanging(value);
-                    ReportPropertyChanging("TrainingId");
-                    _TrainingId = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("TrainingId");
-                    OnTrainingIdChanged();
+                    Onpage_nameChanging(value);
+                    ReportPropertyChanging("page_name");
+                    _page_name = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("page_name");
+                    Onpage_nameChanged();
                 }
             }
         }
-        private global::System.Int32 _TrainingId;
-        partial void OnTrainingIdChanging(global::System.Int32 value);
-        partial void OnTrainingIdChanged();
+        private global::System.String _page_name;
+        partial void Onpage_nameChanging(global::System.String value);
+        partial void Onpage_nameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String page_controller
+        {
+            get
+            {
+                return _page_controller;
+            }
+            set
+            {
+                if (_page_controller != value)
+                {
+                    Onpage_controllerChanging(value);
+                    ReportPropertyChanging("page_controller");
+                    _page_controller = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("page_controller");
+                    Onpage_controllerChanged();
+                }
+            }
+        }
+        private global::System.String _page_controller;
+        partial void Onpage_controllerChanging(global::System.String value);
+        partial void Onpage_controllerChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String page_action
+        {
+            get
+            {
+                return _page_action;
+            }
+            set
+            {
+                if (_page_action != value)
+                {
+                    Onpage_actionChanging(value);
+                    ReportPropertyChanging("page_action");
+                    _page_action = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("page_action");
+                    Onpage_actionChanged();
+                }
+            }
+        }
+        private global::System.String _page_action;
+        partial void Onpage_actionChanging(global::System.String value);
+        partial void Onpage_actionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String TrainingName
+        public global::System.String page_link_text
         {
             get
             {
-                return _TrainingName;
+                return _page_link_text;
             }
             set
             {
-                OnTrainingNameChanging(value);
-                ReportPropertyChanging("TrainingName");
-                _TrainingName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("TrainingName");
-                OnTrainingNameChanged();
+                Onpage_link_textChanging(value);
+                ReportPropertyChanging("page_link_text");
+                _page_link_text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("page_link_text");
+                Onpage_link_textChanged();
             }
         }
-        private global::System.String _TrainingName;
-        partial void OnTrainingNameChanging(global::System.String value);
-        partial void OnTrainingNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String TrainingShortDescription
-        {
-            get
-            {
-                return _TrainingShortDescription;
-            }
-            set
-            {
-                OnTrainingShortDescriptionChanging(value);
-                ReportPropertyChanging("TrainingShortDescription");
-                _TrainingShortDescription = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("TrainingShortDescription");
-                OnTrainingShortDescriptionChanged();
-            }
-        }
-        private global::System.String _TrainingShortDescription;
-        partial void OnTrainingShortDescriptionChanging(global::System.String value);
-        partial void OnTrainingShortDescriptionChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String TrainingLongDescription
-        {
-            get
-            {
-                return _TrainingLongDescription;
-            }
-            set
-            {
-                OnTrainingLongDescriptionChanging(value);
-                ReportPropertyChanging("TrainingLongDescription");
-                _TrainingLongDescription = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("TrainingLongDescription");
-                OnTrainingLongDescriptionChanged();
-            }
-        }
-        private global::System.String _TrainingLongDescription;
-        partial void OnTrainingLongDescriptionChanging(global::System.String value);
-        partial void OnTrainingLongDescriptionChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean IsActive
-        {
-            get
-            {
-                return _IsActive;
-            }
-            set
-            {
-                OnIsActiveChanging(value);
-                ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IsActive");
-                OnIsActiveChanged();
-            }
-        }
-        private global::System.Boolean _IsActive;
-        partial void OnIsActiveChanging(global::System.Boolean value);
-        partial void OnIsActiveChanged();
+        private global::System.String _page_link_text;
+        partial void Onpage_link_textChanging(global::System.String value);
+        partial void Onpage_link_textChanged();
 
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "main_content_item_application_page_fk", "main_content_item")]
+        public main_content_item main_content_item
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<main_content_item>("flyamericaModel.main_content_item_application_page_fk", "main_content_item").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<main_content_item>("flyamericaModel.main_content_item_application_page_fk", "main_content_item").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<main_content_item> main_content_itemReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<main_content_item>("flyamericaModel.main_content_item_application_page_fk", "main_content_item");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<main_content_item>("flyamericaModel.main_content_item_application_page_fk", "main_content_item", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="application_page_component")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class application_page_component : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new application_page_component object.
+        /// </summary>
+        /// <param name="page">Initial value of the page property.</param>
+        /// <param name="component">Initial value of the component property.</param>
+        public static application_page_component Createapplication_page_component(global::System.String page, global::System.String component)
+        {
+            application_page_component application_page_component = new application_page_component();
+            application_page_component.page = page;
+            application_page_component.component = component;
+            return application_page_component;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String page
+        {
+            get
+            {
+                return _page;
+            }
+            set
+            {
+                if (_page != value)
+                {
+                    OnpageChanging(value);
+                    ReportPropertyChanging("page");
+                    _page = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("page");
+                    OnpageChanged();
+                }
+            }
+        }
+        private global::System.String _page;
+        partial void OnpageChanging(global::System.String value);
+        partial void OnpageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String component
+        {
+            get
+            {
+                return _component;
+            }
+            set
+            {
+                if (_component != value)
+                {
+                    OncomponentChanging(value);
+                    ReportPropertyChanging("component");
+                    _component = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("component");
+                    OncomponentChanged();
+                }
+            }
+        }
+        private global::System.String _component;
+        partial void OncomponentChanging(global::System.String value);
+        partial void OncomponentChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "component_image_application_page_component_fk", "component_image")]
+        public EntityCollection<component_image> component_image
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<component_image>("flyamericaModel.component_image_application_page_component_fk", "component_image");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<component_image>("flyamericaModel.component_image_application_page_component_fk", "component_image", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "component_Setting_application_page_component_fk", "application_page_component_setting")]
+        public EntityCollection<application_page_component_setting> application_page_component_setting
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<application_page_component_setting>("flyamericaModel.component_Setting_application_page_component_fk", "application_page_component_setting");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<application_page_component_setting>("flyamericaModel.component_Setting_application_page_component_fk", "application_page_component_setting", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="application_page_component_setting")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class application_page_component_setting : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new application_page_component_setting object.
+        /// </summary>
+        /// <param name="page">Initial value of the page property.</param>
+        /// <param name="component">Initial value of the component property.</param>
+        /// <param name="setting">Initial value of the setting property.</param>
+        /// <param name="value">Initial value of the value property.</param>
+        /// <param name="setting_type">Initial value of the setting_type property.</param>
+        public static application_page_component_setting Createapplication_page_component_setting(global::System.String page, global::System.String component, global::System.String setting, global::System.String value, global::System.String setting_type)
+        {
+            application_page_component_setting application_page_component_setting = new application_page_component_setting();
+            application_page_component_setting.page = page;
+            application_page_component_setting.component = component;
+            application_page_component_setting.setting = setting;
+            application_page_component_setting.value = value;
+            application_page_component_setting.setting_type = setting_type;
+            return application_page_component_setting;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String page
+        {
+            get
+            {
+                return _page;
+            }
+            set
+            {
+                if (_page != value)
+                {
+                    OnpageChanging(value);
+                    ReportPropertyChanging("page");
+                    _page = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("page");
+                    OnpageChanged();
+                }
+            }
+        }
+        private global::System.String _page;
+        partial void OnpageChanging(global::System.String value);
+        partial void OnpageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String component
+        {
+            get
+            {
+                return _component;
+            }
+            set
+            {
+                if (_component != value)
+                {
+                    OncomponentChanging(value);
+                    ReportPropertyChanging("component");
+                    _component = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("component");
+                    OncomponentChanged();
+                }
+            }
+        }
+        private global::System.String _component;
+        partial void OncomponentChanging(global::System.String value);
+        partial void OncomponentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String setting
+        {
+            get
+            {
+                return _setting;
+            }
+            set
+            {
+                if (_setting != value)
+                {
+                    OnsettingChanging(value);
+                    ReportPropertyChanging("setting");
+                    _setting = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("setting");
+                    OnsettingChanged();
+                }
+            }
+        }
+        private global::System.String _setting;
+        partial void OnsettingChanging(global::System.String value);
+        partial void OnsettingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                OnvalueChanging(value);
+                ReportPropertyChanging("value");
+                _value = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("value");
+                OnvalueChanged();
+            }
+        }
+        private global::System.String _value;
+        partial void OnvalueChanging(global::System.String value);
+        partial void OnvalueChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String setting_type
+        {
+            get
+            {
+                return _setting_type;
+            }
+            set
+            {
+                Onsetting_typeChanging(value);
+                ReportPropertyChanging("setting_type");
+                _setting_type = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("setting_type");
+                Onsetting_typeChanged();
+            }
+        }
+        private global::System.String _setting_type;
+        partial void Onsetting_typeChanging(global::System.String value);
+        partial void Onsetting_typeChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "component_Setting_application_page_component_fk", "application_page_component")]
+        public application_page_component application_page_component
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_component>("flyamericaModel.component_Setting_application_page_component_fk", "application_page_component").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_component>("flyamericaModel.component_Setting_application_page_component_fk", "application_page_component").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<application_page_component> application_page_componentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_component>("flyamericaModel.component_Setting_application_page_component_fk", "application_page_component");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<application_page_component>("flyamericaModel.component_Setting_application_page_component_fk", "application_page_component", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "component_Setting_setting_type_fk", "application_page_setting_type")]
+        public application_page_setting_type application_page_setting_type
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_setting_type>("flyamericaModel.component_Setting_setting_type_fk", "application_page_setting_type").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_setting_type>("flyamericaModel.component_Setting_setting_type_fk", "application_page_setting_type").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<application_page_setting_type> application_page_setting_typeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_setting_type>("flyamericaModel.component_Setting_setting_type_fk", "application_page_setting_type");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<application_page_setting_type>("flyamericaModel.component_Setting_setting_type_fk", "application_page_setting_type", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="application_page_setting")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class application_page_setting : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new application_page_setting object.
+        /// </summary>
+        /// <param name="page">Initial value of the page property.</param>
+        /// <param name="setting">Initial value of the setting property.</param>
+        /// <param name="value">Initial value of the value property.</param>
+        /// <param name="setting_type">Initial value of the setting_type property.</param>
+        public static application_page_setting Createapplication_page_setting(global::System.String page, global::System.String setting, global::System.String value, global::System.String setting_type)
+        {
+            application_page_setting application_page_setting = new application_page_setting();
+            application_page_setting.page = page;
+            application_page_setting.setting = setting;
+            application_page_setting.value = value;
+            application_page_setting.setting_type = setting_type;
+            return application_page_setting;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String page
+        {
+            get
+            {
+                return _page;
+            }
+            set
+            {
+                if (_page != value)
+                {
+                    OnpageChanging(value);
+                    ReportPropertyChanging("page");
+                    _page = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("page");
+                    OnpageChanged();
+                }
+            }
+        }
+        private global::System.String _page;
+        partial void OnpageChanging(global::System.String value);
+        partial void OnpageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String setting
+        {
+            get
+            {
+                return _setting;
+            }
+            set
+            {
+                if (_setting != value)
+                {
+                    OnsettingChanging(value);
+                    ReportPropertyChanging("setting");
+                    _setting = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("setting");
+                    OnsettingChanged();
+                }
+            }
+        }
+        private global::System.String _setting;
+        partial void OnsettingChanging(global::System.String value);
+        partial void OnsettingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                OnvalueChanging(value);
+                ReportPropertyChanging("value");
+                _value = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("value");
+                OnvalueChanged();
+            }
+        }
+        private global::System.String _value;
+        partial void OnvalueChanging(global::System.String value);
+        partial void OnvalueChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String setting_type
+        {
+            get
+            {
+                return _setting_type;
+            }
+            set
+            {
+                Onsetting_typeChanging(value);
+                ReportPropertyChanging("setting_type");
+                _setting_type = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("setting_type");
+                Onsetting_typeChanged();
+            }
+        }
+        private global::System.String _setting_type;
+        partial void Onsetting_typeChanging(global::System.String value);
+        partial void Onsetting_typeChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "setting_setting_type_fk", "application_page_setting_type")]
+        public application_page_setting_type application_page_setting_type
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_setting_type>("flyamericaModel.setting_setting_type_fk", "application_page_setting_type").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_setting_type>("flyamericaModel.setting_setting_type_fk", "application_page_setting_type").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<application_page_setting_type> application_page_setting_typeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_setting_type>("flyamericaModel.setting_setting_type_fk", "application_page_setting_type");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<application_page_setting_type>("flyamericaModel.setting_setting_type_fk", "application_page_setting_type", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="application_page_setting_type")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class application_page_setting_type : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new application_page_setting_type object.
+        /// </summary>
+        /// <param name="setting_type">Initial value of the setting_type property.</param>
+        public static application_page_setting_type Createapplication_page_setting_type(global::System.String setting_type)
+        {
+            application_page_setting_type application_page_setting_type = new application_page_setting_type();
+            application_page_setting_type.setting_type = setting_type;
+            return application_page_setting_type;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String setting_type
+        {
+            get
+            {
+                return _setting_type;
+            }
+            set
+            {
+                if (_setting_type != value)
+                {
+                    Onsetting_typeChanging(value);
+                    ReportPropertyChanging("setting_type");
+                    _setting_type = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("setting_type");
+                    Onsetting_typeChanged();
+                }
+            }
+        }
+        private global::System.String _setting_type;
+        partial void Onsetting_typeChanging(global::System.String value);
+        partial void Onsetting_typeChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "component_Setting_setting_type_fk", "application_page_component_setting")]
+        public EntityCollection<application_page_component_setting> application_page_component_setting
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<application_page_component_setting>("flyamericaModel.component_Setting_setting_type_fk", "application_page_component_setting");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<application_page_component_setting>("flyamericaModel.component_Setting_setting_type_fk", "application_page_component_setting", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "setting_setting_type_fk", "application_page_setting")]
+        public EntityCollection<application_page_setting> application_page_setting
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<application_page_setting>("flyamericaModel.setting_setting_type_fk", "application_page_setting");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<application_page_setting>("flyamericaModel.setting_setting_type_fk", "application_page_setting", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="asset")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class asset : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new asset object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="asset_name">Initial value of the asset_name property.</param>
+        public static asset Createasset(global::System.Int32 id, global::System.String asset_name)
+        {
+            asset asset = new asset();
+            asset.id = id;
+            asset.asset_name = asset_name;
+            return asset;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String asset_name
+        {
+            get
+            {
+                return _asset_name;
+            }
+            set
+            {
+                Onasset_nameChanging(value);
+                ReportPropertyChanging("asset_name");
+                _asset_name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("asset_name");
+                Onasset_nameChanged();
+            }
+        }
+        private global::System.String _asset_name;
+        partial void Onasset_nameChanging(global::System.String value);
+        partial void Onasset_nameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                OndescriptionChanging(value);
+                ReportPropertyChanging("description");
+                _description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("description");
+                OndescriptionChanged();
+            }
+        }
+        private global::System.String _description;
+        partial void OndescriptionChanging(global::System.String value);
+        partial void OndescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String extension
+        {
+            get
+            {
+                return _extension;
+            }
+            set
+            {
+                OnextensionChanging(value);
+                ReportPropertyChanging("extension");
+                _extension = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("extension");
+                OnextensionChanged();
+            }
+        }
+        private global::System.String _extension;
+        partial void OnextensionChanging(global::System.String value);
+        partial void OnextensionChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "slider_image_asset_fk", "component_image")]
+        public EntityCollection<component_image> component_image
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<component_image>("flyamericaModel.slider_image_asset_fk", "component_image");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<component_image>("flyamericaModel.slider_image_asset_fk", "component_image", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="component_image")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class component_image : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new component_image object.
+        /// </summary>
+        /// <param name="page">Initial value of the page property.</param>
+        /// <param name="component">Initial value of the component property.</param>
+        /// <param name="asset">Initial value of the asset property.</param>
+        /// <param name="isActive">Initial value of the isActive property.</param>
+        public static component_image Createcomponent_image(global::System.String page, global::System.String component, global::System.Int32 asset, global::System.Boolean isActive)
+        {
+            component_image component_image = new component_image();
+            component_image.page = page;
+            component_image.component = component;
+            component_image.asset = asset;
+            component_image.isActive = isActive;
+            return component_image;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String page
+        {
+            get
+            {
+                return _page;
+            }
+            set
+            {
+                if (_page != value)
+                {
+                    OnpageChanging(value);
+                    ReportPropertyChanging("page");
+                    _page = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("page");
+                    OnpageChanged();
+                }
+            }
+        }
+        private global::System.String _page;
+        partial void OnpageChanging(global::System.String value);
+        partial void OnpageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String component
+        {
+            get
+            {
+                return _component;
+            }
+            set
+            {
+                if (_component != value)
+                {
+                    OncomponentChanging(value);
+                    ReportPropertyChanging("component");
+                    _component = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("component");
+                    OncomponentChanged();
+                }
+            }
+        }
+        private global::System.String _component;
+        partial void OncomponentChanging(global::System.String value);
+        partial void OncomponentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 asset
+        {
+            get
+            {
+                return _asset;
+            }
+            set
+            {
+                if (_asset != value)
+                {
+                    OnassetChanging(value);
+                    ReportPropertyChanging("asset");
+                    _asset = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("asset");
+                    OnassetChanged();
+                }
+            }
+        }
+        private global::System.Int32 _asset;
+        partial void OnassetChanging(global::System.Int32 value);
+        partial void OnassetChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean isActive
+        {
+            get
+            {
+                return _isActive;
+            }
+            set
+            {
+                OnisActiveChanging(value);
+                ReportPropertyChanging("isActive");
+                _isActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("isActive");
+                OnisActiveChanged();
+            }
+        }
+        private global::System.Boolean _isActive;
+        partial void OnisActiveChanging(global::System.Boolean value);
+        partial void OnisActiveChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "component_image_application_page_component_fk", "application_page_component")]
+        public application_page_component application_page_component
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_component>("flyamericaModel.component_image_application_page_component_fk", "application_page_component").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_component>("flyamericaModel.component_image_application_page_component_fk", "application_page_component").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<application_page_component> application_page_componentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page_component>("flyamericaModel.component_image_application_page_component_fk", "application_page_component");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<application_page_component>("flyamericaModel.component_image_application_page_component_fk", "application_page_component", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "slider_image_asset_fk", "asset")]
+        public asset asset1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<asset>("flyamericaModel.slider_image_asset_fk", "asset").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<asset>("flyamericaModel.slider_image_asset_fk", "asset").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<asset> asset1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<asset>("flyamericaModel.slider_image_asset_fk", "asset");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<asset>("flyamericaModel.slider_image_asset_fk", "asset", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="content_paragraph")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class content_paragraph : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new content_paragraph object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="text">Initial value of the text property.</param>
+        public static content_paragraph Createcontent_paragraph(global::System.Int32 id, global::System.String text)
+        {
+            content_paragraph content_paragraph = new content_paragraph();
+            content_paragraph.id = id;
+            content_paragraph.text = text;
+            return content_paragraph;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String text
+        {
+            get
+            {
+                return _text;
+            }
+            set
+            {
+                OntextChanging(value);
+                ReportPropertyChanging("text");
+                _text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("text");
+                OntextChanged();
+            }
+        }
+        private global::System.String _text;
+        partial void OntextChanging(global::System.String value);
+        partial void OntextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> asset
+        {
+            get
+            {
+                return _asset;
+            }
+            set
+            {
+                OnassetChanging(value);
+                ReportPropertyChanging("asset");
+                _asset = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("asset");
+                OnassetChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _asset;
+        partial void OnassetChanging(Nullable<global::System.Int32> value);
+        partial void OnassetChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="flyamericaModel", Name="main_content_item")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class main_content_item : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new main_content_item object.
+        /// </summary>
+        /// <param name="page">Initial value of the page property.</param>
+        /// <param name="controller">Initial value of the controller property.</param>
+        /// <param name="action">Initial value of the action property.</param>
+        public static main_content_item Createmain_content_item(global::System.String page, global::System.String controller, global::System.String action)
+        {
+            main_content_item main_content_item = new main_content_item();
+            main_content_item.page = page;
+            main_content_item.controller = controller;
+            main_content_item.action = action;
+            return main_content_item;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String page
+        {
+            get
+            {
+                return _page;
+            }
+            set
+            {
+                if (_page != value)
+                {
+                    OnpageChanging(value);
+                    ReportPropertyChanging("page");
+                    _page = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("page");
+                    OnpageChanged();
+                }
+            }
+        }
+        private global::System.String _page;
+        partial void OnpageChanging(global::System.String value);
+        partial void OnpageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String controller
+        {
+            get
+            {
+                return _controller;
+            }
+            set
+            {
+                if (_controller != value)
+                {
+                    OncontrollerChanging(value);
+                    ReportPropertyChanging("controller");
+                    _controller = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("controller");
+                    OncontrollerChanged();
+                }
+            }
+        }
+        private global::System.String _controller;
+        partial void OncontrollerChanging(global::System.String value);
+        partial void OncontrollerChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String action
+        {
+            get
+            {
+                return _action;
+            }
+            set
+            {
+                if (_action != value)
+                {
+                    OnactionChanging(value);
+                    ReportPropertyChanging("action");
+                    _action = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("action");
+                    OnactionChanged();
+                }
+            }
+        }
+        private global::System.String _action;
+        partial void OnactionChanging(global::System.String value);
+        partial void OnactionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String short_description
+        {
+            get
+            {
+                return _short_description;
+            }
+            set
+            {
+                Onshort_descriptionChanging(value);
+                ReportPropertyChanging("short_description");
+                _short_description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("short_description");
+                Onshort_descriptionChanged();
+            }
+        }
+        private global::System.String _short_description;
+        partial void Onshort_descriptionChanging(global::System.String value);
+        partial void Onshort_descriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> asset
+        {
+            get
+            {
+                return _asset;
+            }
+            set
+            {
+                OnassetChanging(value);
+                ReportPropertyChanging("asset");
+                _asset = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("asset");
+                OnassetChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _asset;
+        partial void OnassetChanging(Nullable<global::System.Int32> value);
+        partial void OnassetChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> sequence
+        {
+            get
+            {
+                return _sequence;
+            }
+            set
+            {
+                OnsequenceChanging(value);
+                ReportPropertyChanging("sequence");
+                _sequence = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("sequence");
+                OnsequenceChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _sequence;
+        partial void OnsequenceChanging(Nullable<global::System.Int32> value);
+        partial void OnsequenceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> active
+        {
+            get
+            {
+                return _active;
+            }
+            set
+            {
+                OnactiveChanging(value);
+                ReportPropertyChanging("active");
+                _active = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("active");
+                OnactiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _active;
+        partial void OnactiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnactiveChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("flyamericaModel", "main_content_item_application_page_fk", "application_page")]
+        public application_page application_page
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page>("flyamericaModel.main_content_item_application_page_fk", "application_page").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page>("flyamericaModel.main_content_item_application_page_fk", "application_page").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<application_page> application_pageReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<application_page>("flyamericaModel.main_content_item_application_page_fk", "application_page");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<application_page>("flyamericaModel.main_content_item_application_page_fk", "application_page", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
 
     #endregion

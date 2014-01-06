@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading;
 
-namespace flyamerica.Controllers
+namespace FlyAmerica.Controllers
 {
     public class FlightTrainingController : BaseController
     {
@@ -13,18 +14,13 @@ namespace flyamerica.Controllers
 
         public ActionResult Index()
         {
-            BI.ViewModels.FlightTraining model = new BI.ViewModels.FlightTraining();
-            BI.Content.ContentManager cm = new BI.Content.ContentManager();
-            model = cm.GetFlightTrainingInfo();
-            return View(model);
+            return View(JDB.BI.Content.ContentManager.GetFlightTrainingInfo());
         }
 
         public ActionResult LoadFlightTrainingPrograms()
         {
-            List<BI.ViewModels.FlightTrainingProgram> model = new List<BI.ViewModels.FlightTrainingProgram>();
-            BI.Content.ContentManager cm = new BI.Content.ContentManager();
-            model = cm.GetFlightTrainingPrograms();
-            return PartialView("Partials/_FlightPrograms", model);
+            
+            return PartialView("Partials/_FlightPrograms", JDB.BI.Content.ContentManager.GetFlightTrainingPrograms());
 
         }
 
@@ -33,9 +29,20 @@ namespace flyamerica.Controllers
 
         public ActionResult Program(int ID)
         {
-            BI.Content.ContentManager cm = new BI.Content.ContentManager();
-            return View(cm.GetFlightTrainingProgram(ID));
+            return View(JDB.BI.Content.ContentManager.GetFlightTrainingProgram(ID));
         }
+
+        public ActionResult GetNews(int ID)
+        {
+            return PartialView("Partials/_RecentNews", JDB.BI.Content.ContentManager.GetNewsItems(JDB.DAL.Reference.NewsItemTypes.FlightTrainingProgram));
+
+        }
+
+        public ActionResult GetTestimonials(int ID)
+        {
+            return PartialView("Partials/_Testimonials", JDB.BI.Content.ContentManager.GetTestimonials());
+        }
+
 
 
 

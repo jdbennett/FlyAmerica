@@ -269,10 +269,11 @@ header{
 }
 	
 /************Content***********/
-.bg_img{
-	width: 100%;
-	height: 217px;
-	background: url(../images/big_img1.jpg) center top no-repeat;
+.bg_img
+{
+    width: 100%;
+    height: 217px;
+
 }
 .box1{
 	padding: 0px 0 24px;
@@ -292,7 +293,7 @@ header{
   display: block;
   padding-left: 12px;
   margin-bottom: 3px;
-  background: url(../images/list_marker.png) 0 7px no-repeat;
+  background: url(../Content/images/list_marker.png) 0 7px no-repeat;
 }
 .listWithMarker li a {
   display: inline-block;
@@ -315,7 +316,7 @@ header{
   display: block;
   padding-left: 12px;
   margin-bottom: 12px;
-  background: url(../images/list_marker2.png) 0 5px no-repeat;
+  background: url(../Content/images/list_marker2.png) 0 5px no-repeat;
 }
 .listWithMarker2 li a {
   display: inline-block;
@@ -385,7 +386,7 @@ header{
   
 	padding-right: 9px;
   
-	background: url(../images/more_arr1.png) right 6px no-repeat;
+	background: url(../Content/images/more_arr1.png) right 6px no-repeat;
   text-transform: uppercase;
 }
 .more_btn2:hover {
@@ -444,7 +445,7 @@ address a, .link1{
   margin-top: -34px;
 }
 .list_carousel .more_btn{
-  margin-bottom: 38px;
+  margin-bottom: 50px;
 }
 .list_carousel ul {
   margin: 0;
@@ -460,6 +461,7 @@ address a, .link1{
   margin-right:0px;
   float: left;
 }
+
 .list_carousel li blockquote{
 	position: relative;
 	width: 100%;
@@ -481,11 +483,15 @@ address a, .link1{
 	height: 11px;
 	left: 59px;
 	bottom: -11px;
-	background: url(../images/quote_corner.png) no-repeat 0 0;
+	background: url(../Content/images/quote_corner.png) no-repeat 0 0;
 }
 
 .list_carousel.responsive {
   width: auto;
+}
+
+.list_carousel.marTop1 {
+  margin-top: 34px;
 }
 .prev,
 .next {
@@ -496,11 +502,11 @@ address a, .link1{
   height: 44px;
 }
 .next {
-  background: url(../images/slider_arr_next.png) no-repeat 0 0;
+  background: url(../Content/images/slider_arr_next.png) no-repeat 0 0;
   right: 0px;
 }
 .prev {
-  background: url(../images/slider_arr_prev.png) no-repeat 0 0;
+  background: url(../Content/images/slider_arr_prev.png) no-repeat 0 0;
   right: 60px;
 }
 .prev:hover,
@@ -542,7 +548,7 @@ address a, .link1{
   	box-sizing: border-box;
 	-moz-box-sizing: border-box; /*Firefox 1-3*/
 	-webkit-box-sizing: border-box; /* Safari */
-	background: url(../images/plus_sign.png) right bottom no-repeat;
+	background: url(../Content/images/plus_sign.png) right bottom no-repeat;
 
 
 }
@@ -660,3 +666,103 @@ footer a:hover{color:#000}
 @media only screen and (max-width: 320px) {
 
 }
+
+
+/*==================================Modified===============================================*/
+.lf
+{
+    float:left;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.pAdj
+{
+    float:none;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.news
+{
+    width: 100%;
+    
+}
+
+.marRght1{ margin-right: 30px;}
+
+.mcMarRght{margin-right:0px;}
+
+
+.loadmask
+{
+    height: 100%;
+    position: relative;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    left:0;
+}
+.loadmask-msg
+{
+    position: relative;
+}
+.loadmask-msg div
+{
+    background: url('images/ajax-loader.gif?10102013') no-repeat center bottom;
+    cursor: wait;
+    min-height: 100px;
+    min-width: 100px;
+    vertical-align: middle;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    left:0;
+
+}
+.loadmask-override div
+{
+    background-image: none !important;
+    min-height: 10px !important;
+    min-width: 10px !important;
+}
+
+.ajaxContentDump{min-height:100px;}
+
+
+.caroselPadding{ padding-bottom: 85px;}
+
+.prevMc,
+.nextMc {
+  position: absolute;
+  top: 0px;
+  display: block;
+  width: 59px;
+  height: 44px;
+}
+.nextMc {
+  background: url(../Content/images/slider_arr_next.png) no-repeat 0 0;
+  right: 0px;
+}
+.prevMc {
+  background: url(../Content/images/slider_arr_prev.png) no-repeat 0 0;
+  right: 60px;
+}
+.prevMc:hover,
+.nextMc:hover {
+  background-position: 0 bottom;
+}
+
+/*------start list_carousel ------- */
+.grid_carousel {
+  padding: 0 0 100px;
+  position: relative;
+  margin-top: 10px;
+}
+.grid_carousel .more_btn{
+  margin-bottom: 50px;
+  margin-left:auto;
+}
+
+.mcItem {text-align:center;padding-bottom:30px;}
+.mcPhgt {height: 100px;}

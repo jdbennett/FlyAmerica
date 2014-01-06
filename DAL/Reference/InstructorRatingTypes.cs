@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace flyamerica.DAL.Reference
+namespace JDB.DAL.Reference
 {
     public enum InstructorRatingTypes
     {
